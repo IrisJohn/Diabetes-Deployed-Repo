@@ -20,26 +20,24 @@ def home():
 # Create the prediction route
 @app.route('/predict', methods=['POST'])
 def predict():
-    data = request.get_json()  # Get the input data from the frontend
+    try:
 
-    # Extract the values from the input
-    age = float(data['age'])
-    bmi = float(data['bmi'])
-    glucose = float(data['glucose'])
-    bloodPressure = float(data['bloodPressure'])
-    pregnancies = float(data['pregnancies'])
-    skinThickness = float(data['skinThickness'])
-    insulin = float(data['insulin'])
-    diabetesPedigreeFunction = float(data['diabetesPedigreeFunction'])
+        data = request.get_json()  # Get the input data from the frontend
 
-      
-
-
-    input_data = np.array([[age, bmi, glucose, bloodPressure,pregnancies,skinThickness,insulin,diabetesPedigreeFunction]])
-    prediction = model.predict(input_data)
-
-    # Return the result as JSON
-    return jsonify({'prediction': int(prediction[0])})
+        # Extract the values from the input
+        age = float(data['age'])
+        bmi = float(data['bmi'])
+        glucose = float(data['glucose'])
+        bloodPressure = float(data['bloodPressure'])
+        pregnancies = float(data['pregnancies'])
+        skinThickness = float(data['skinThickness'])
+        insulin = float(data['insulin'])
+        diabetesPedigreeFunction = float(data['diabetesPedigreeFunction'])
+        input_data = np.array([[age, bmi, glucose, bloodPressure,pregnancies,skinThickness,insulin,diabetesPedigreeFunction]])
+        prediction = model.predict(input_data)
+        return jsonify({'prediction': int(prediction[0])})
+    except Exception as e:
+        return jsonify({'error': str(e)}), 400
 
 if __name__ == '__main__':
     app.run(debug=True)
