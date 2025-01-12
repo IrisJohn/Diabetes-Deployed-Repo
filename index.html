@@ -1,0 +1,42 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Diabetes Prediction</title>
+    <link rel="stylesheet" href="styles.css"> <!-- This links to our CSS file -->
+</head>
+<body>
+    <div class="container">
+        <h1>Diabetes Prediction</h1>
+        <!-- The form where users will input their data -->
+        <form id="diabetesForm">
+            <label for="name">Name:</label>
+            <input type="string" id="name" name="name" required>
+
+            <label for="gender">Gender:</label>
+            <input type="string" id="gender" name="gender" required>
+
+            <label for="age">Age:</label>
+            <input type="number" id="age" name="age" required>
+
+            <label for="bmi">BMI (Body Mass Index):</label>
+            <input type="number" id="bmi" name="bmi" step="0.1" required>
+
+            <label for="glucose">Glucose Level:</label>
+            <input type="number" id="glucose" name="glucose" required>
+
+            <label for="bloodPressure">Blood Pressure:</label>
+            <input type="number" id="bloodPressure" name="bloodPressure" required>
+
+
+            <button type="submit">Predict</button>
+        </form>
+
+        <!-- Where we display the result -->
+        <div id="result"></div>
+    </div>
+
+    <script src="script.js"></script> <!-- This links to our JavaScript file -->
+</body>
+</html>
